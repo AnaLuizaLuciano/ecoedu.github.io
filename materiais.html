@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tempo de Decomposição</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+
+  <style>
+    body {
+      background-color: #b7caa1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      background-color: #374f32;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
+      margin-bottom: 60px;
+    }
+
+    header nav {
+      width: 100%;
+    }
+
+    .nav-link {
+      color: #cbd5b5;
+      background-color: #b0c18c;
+      border-radius: 8px;
+      margin-left: 10px;
+      padding: 7px 15px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: #3d5a27;
+      color: #e3f4d7;
+    }
+
+    main {
+      padding: 0 20px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .titulo-principal {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .titulo-principal h1 {
+      font-size: 2.2rem;
+      color: #2d3c21;
+      margin-bottom: 10px;
+    }
+
+    .titulo-principal p {
+      font-size: 1.1rem;
+      color: #374f32;
+    }
+
+    .container-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      perspective: 1200px; /* para efeito 3D */
+    }
+
+    .card {
+      width: 320px;
+      height: 220px;
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      cursor: pointer;
+      background-color: #fff;
+    }
+
+    .card:hover .card-inner {
+      transform: rotateY(180deg);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-front,
+    .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card-front {
+      color: #374f32;
+      background-color: #fff;
+      font-weight: 700;
+    }
+
+    .card-front .card-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-front .card-text {
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    .card-back {
+      background-color: #3d5a27;
+      color: #e3f4d7;
+      transform: rotateY(180deg);
+      font-size: 1rem;
+      font-weight: 500;
+      overflow-y: auto;
+    }
+
+    footer {
+      background-color: #374f32;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      padding: 0 20px;
+      margin-top: auto;
+    }
+
+    .social-link {
+      color: #cbd5b5;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .social-link:hover {
+      color: #9bb86c;
+    }
+
+    @media (max-width: 650px) {
+      .card {
+        width: 100%;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="d-flex">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="titulo-principal">
+      <h1>Tempo de Decomposição dos Materiais</h1>
+      <p>Conheça quanto tempo os resíduos levam para desaparecer e como reciclar ou descartar corretamente</p>
+    </section>
+
+    <div class="container-cards">
+      <!-- Plástico -->
+      <div class="card" tabindex="0" aria-label="Plástico">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🪣 Plástico</h5>
+            <p class="card-text">Decomposição: mais de 400 anos</p>
+            <p class="reciclavel">♻️ Reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>O plástico deve ser separado e enviado para centros de reciclagem específicos. Evite descartá-lo no meio ambiente e prefira reduzir o consumo de itens plásticos descartáveis.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vidro -->
+      <div class="card" tabindex="0" aria-label="Vidro">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🫙 Vidro</h5>
+            <p class="card-text">Decomposição: indeterminado (milhares de anos)</p>
+            <p class="reciclavel">♻️ Reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>O vidro pode ser reciclado infinitamente sem perder qualidade. Lave e descarte em pontos de coleta seletiva para reciclagem correta.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Papel -->
+      <div class="card" tabindex="0" aria-label="Papel">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">📄 Papel</h5>
+            <p class="card-text">Decomposição: 3 a 6 meses</p>
+            <p class="reciclavel">♻️ Reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>Separe papéis limpos e secos para reciclagem. Papéis sujos ou engordurados não devem ser reciclados e podem ser compostados.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alumínio (lata) -->
+      <div class="card" tabindex="0" aria-label="Alumínio">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🥫 Alumínio (lata)</h5>
+            <p class="card-text">Decomposição: 200 a 500 anos</p>
+            <p class="reciclavel">♻️ Reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>As latas de alumínio são altamente recicláveis. Lave e descarte nos pontos de coleta para reciclagem. Reciclar alumínio economiza muita energia.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bituca de cigarro -->
+      <div class="card" tabindex="0" aria-label="Bituca de cigarro">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🚬 Bituca de cigarro</h5>
+            <p class="card-text">Decomposição: 10 a 20 anos</p>
+            <p class="nao-reciclavel">🚫 Não reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>Não jogue bitucas no chão ou na água. Descarte em lixeiras comuns, pois não são recicláveis e poluem muito o ambiente.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tecido de algodão -->
+      <div class="card" tabindex="0" aria-label="Tecido de algodão">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">👕 Tecido de algodão</h5>
+            <p class="card-text">Decomposição: 2 a 5 meses</p>
+            <p class="reciclavel">♻️ Reciclável (algumas peças)</p>
+          </div>
+          <div class="card-back">
+            <p>Alguns tecidos de algodão podem ser reciclados ou reaproveitados. Doe roupas usadas ou utilize para reciclagem têxtil.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tecido sintético (poliéster) -->
+      <div class="card" tabindex="0" aria-label="Tecido sintético">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">👗 Tecido sintético (poliéster)</h5>
+            <p class="card-text">Decomposição: mais de 100 anos</p>
+            <p class="reciclavel">♻️ Reciclável (em cooperativas)</p>
+          </div>
+          <div class="card-back">
+            <p>Tecidos sintéticos podem ser reciclados em cooperativas especializadas. Prefira cooperativas locais para descarte correto.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chiclete -->
+      <div class="card" tabindex="0" aria-label="Chiclete">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🍬 Chiclete</h5>
+            <p class="card-text">Decomposição: mais de 5 anos</p>
+            <p class="nao-reciclavel">🚫 Não reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>Chicletes não são recicláveis. Nunca jogue no chão. Descarte em lixo comum e evite consumo excessivo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restos de comida -->
+      <div class="card" tabindex="0" aria-label="Restos de comida">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🥗 Restos de comida</h5>
+            <p class="card-text">Decomposição: 1 semana a 3 meses</p>
+            <p class="nao-reciclavel">🚫 Não reciclável (mas pode ser compostado)</p>
+          </div>
+          <div class="card-back">
+            <p>Restos de comida não são recicláveis, mas são ótimos para compostagem doméstica, ajudando a produzir adubo natural.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Garrafas PET -->
+      <div class="card" tabindex="0" aria-label="Garrafas PET">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🍾 Garrafas PET</h5>
+            <p class="card-text">Decomposição: 400 a 600 anos</p>
+            <p class="reciclavel">♻️ Reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>Garrafas PET devem ser limpas e descartadas em pontos de coleta para reciclagem. Evite descartá-las no meio ambiente.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Esponja de lavar louça -->
+      <div class="card" tabindex="0" aria-label="Esponja de lavar louça">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🧽 Esponja de lavar louça</h5>
+            <p class="card-text">Decomposição: 100 a 400 anos</p>
+            <p class="nao-reciclavel">🚫 Não reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>Esponjas sintéticas não são recicláveis. Prefira esponjas naturais e descarte esponjas usadas no lixo comum.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fralda descartável -->
+      <div class="card" tabindex="0" aria-label="Fralda descartável">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🩲 Fralda descartável</h5>
+            <p class="card-text">Decomposição: até 600 anos</p>
+            <p class="nao-reciclavel">🚫 Não reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>Fraldas descartáveis não são recicláveis. Devem ser descartadas no lixo comum. Considere alternativas reutilizáveis para reduzir o impacto.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Papel alumínio -->
+      <div class="card" tabindex="0" aria-label="Papel alumínio">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">📦 Papel alumínio</h5>
+            <p class="card-text">Decomposição: cerca de 200 anos</p>
+            <p class="reciclavel">♻️ Reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>Papel alumínio pode ser reciclado se estiver limpo. Evite contaminação com resíduos para garantir a reciclagem correta.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Embalagem longa vida -->
+      <div class="card" tabindex="0" aria-label="Embalagem longa vida">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🧃 Embalagem longa vida</h5>
+            <p class="card-text">Decomposição: cerca de 100 anos</p>
+            <p class="reciclavel">♻️ Reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>As embalagens longa vida precisam ser enviadas para reciclagem específica devido à sua composição mista (papel, plástico e alumínio).</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Madeira tratada -->
+      <div class="card" tabindex="0" aria-label="Madeira tratada">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🪵 Madeira tratada</h5>
+            <p class="card-text">Decomposição: 13 anos</p>
+            <p class="nao-reciclavel">🚫 Não reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>Madeira tratada contém produtos químicos e não deve ser queimada ou descartada no meio ambiente. Procure pontos de coleta especializados.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Casca de fruta -->
+      <div class="card" tabindex="0" aria-label="Casca de fruta">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🍌 Casca de fruta</h5>
+            <p class="card-text">Decomposição: 2 semanas</p>
+            <p class="nao-reciclavel">🚫 Não reciclável (compostável)</p>
+          </div>
+          <div class="card-back">
+            <p>Cascas de frutas são compostáveis e devem ser descartadas em compostagem para produção de adubo orgânico.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pilhas -->
+      <div class="card" tabindex="0" aria-label="Pilhas">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🔋 Pilhas</h5>
+            <p class="card-text">Decomposição: até 500 anos</p>
+            <p class="nao-reciclavel">🚫 Não reciclável (comum)</p>
+          </div>
+          <div class="card-back">
+            <p>Pilhas são tóxicas e devem ser descartadas em pontos de coleta específicos para resíduos perigosos.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pneus -->
+      <div class="card" tabindex="0" aria-label="Pneus">
+        <div class="card-inner">
+          <div class="card-front">
+            <h5 class="card-title">🛞 Pneus</h5>
+            <p class="card-text">Decomposição: mais de 600 anos</p>
+            <p class="reciclavel">♻️ Reciclável</p>
+          </div>
+          <div class="card-back">
+            <p>Pneus podem ser reciclados para fabricação de pisos, solados e outros produtos. Entregue-os em pontos de coleta especializados.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <a href="https://instagram.com/analu.riedel" class="social-link" target="_blank" rel="noopener">
+      <i class="fab fa-instagram"></i>Ana Luiza
+    </a>
+    <a href="https://instagram.com/acwrolini" class="social-link" target="_blank" rel="noopener">
+      <i class="fab fa-instagram"></i>Ana Carolini
+    </a>
+    <a href="https://instagram.com/_hrossi_" class="social-link" target="_blank" rel="noopener">
+      <i class="fab fa-instagram"></i>Helena
+    </a>
+    <a href="https://instagram.com/_czerski" class="social-link" target="_blank" rel="noopener">
+      <i class="fab fa-instagram"></i>Pedro
+    </a>
+  </footer>
+
+</body>
+</html>

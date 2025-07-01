@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dicas Sustentáveis</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+
+  <style>
+    body {
+      background-color: #b7caa1; /* Verde claro suave */
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #374f32; /* Verde escuro do texto */
+    }
+
+    header {
+      background-color: #374f32; /* igual aos outros códigos */
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
+      margin-bottom: 50px;
+    }
+
+    header nav {
+      width: 100%;
+    }
+
+    .nav-link {
+      color: #cbd5b5; /* texto claro */
+      background-color: #b0c18c; /* verde claro */
+      border-radius: 8px;
+      margin-left: 10px;
+      padding: 7px 15px;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1.05rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: #3d5a27; /* verde escuro para hover */
+      color: #e3f4d7; /* texto mais claro */
+    }
+
+    main {
+      max-width: 700px;
+      margin: 0 auto 60px;
+      padding: 0 15px;
+    }
+
+    .titulo-principal {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .titulo-principal h1 {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+      font-weight: 700;
+      color: #2d3c21; /* Verde escuro para título */
+    }
+
+    .titulo-principal p {
+      font-size: 1.25rem;
+      color: #374f32;
+      font-weight: 500;
+    }
+
+    ul.dicas-lista {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 0;
+    }
+
+    ul.dicas-lista li {
+      background-color: #e6f2c3; /* verde clarinho para cards */
+      margin-bottom: 20px;
+      padding: 20px 25px;
+      border-left: 8px solid #3d5a27; /* verde escuro borda */
+      border-radius: 8px;
+      box-shadow: 2px 2px 8px rgba(61, 90, 39, 0.2);
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: background-color 0.3s ease;
+      color: #374f32;
+    }
+
+    ul.dicas-lista li:hover {
+      background-color: #d0e2a4; /* clarear no hover */
+    }
+
+    ul.dicas-lista li i {
+      font-size: 2.5rem;
+      color: #3d5a27;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    ul.dicas-lista li div.texto {
+      flex: 1;
+    }
+
+    ul.dicas-lista li div.texto strong {
+      font-weight: 700;
+      font-size: 1.2rem;
+      display: block;
+      margin-bottom: 6px;
+      color: #2d3c21;
+    }
+
+    footer {
+      background-color: #374f32;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      padding: 0 20px;
+      color: #cbd5b5;
+      font-weight: 600;
+    }
+
+    footer a {
+      color: #cbd5b5;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    footer a:hover {
+      color: #9bb86c;
+    }
+
+    @media (max-width: 650px) {
+      main {
+        max-width: 95%;
+      }
+      ul.dicas-lista li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      ul.dicas-lista li i {
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+        <nav class="d-flex">
+            <a href="index.html" class="nav-link active">Home</a>
+          </nav>
+    </nav>
+  </header>
+
+  <main>
+    <section class="titulo-principal">
+      <h1>Dicas Sustentáveis para o Dia a Dia</h1>
+      <p>Pequenas atitudes que fazem a diferença para o planeta</p>
+    </section>
+
+    <ul class="dicas-lista">
+      <li>
+        <i class="fas fa-water"></i>
+        <div class="texto">
+          <strong>Economize Água</strong>
+          Feche a torneira enquanto escova os dentes, tome banhos mais rápidos e conserte vazamentos para evitar desperdício.
+        </div>
+      </li>
+
+      <li>
+        <i class="fas fa-recycle"></i>
+        <div class="texto">
+          <strong>Separe o Lixo</strong>
+          Pratique a coleta seletiva em casa e no trabalho. Separe papel, plástico, vidro e metal para reciclagem correta.
+        </div>
+      </li>
+
+      <li>
+        <i class="fas fa-lightbulb"></i>
+        <div class="texto">
+          <strong>Use Lâmpadas LED</strong>
+          Substitua lâmpadas comuns por LED, que consomem menos energia e têm maior durabilidade.
+        </div>
+      </li>
+
+      <li>
+        <i class="fas fa-shopping-bag"></i>
+        <div class="texto">
+          <strong>Evite Plásticos Descartáveis</strong>
+          Prefira sacolas reutilizáveis, copos e canudos de materiais sustentáveis e reduza o consumo de embalagens descartáveis.
+        </div>
+      </li>
+
+      <li>
+        <i class="fas fa-seedling"></i>
+        <div class="texto">
+          <strong>Plante Árvores e Hortas</strong>
+          Plante árvores no seu bairro e cultive hortas caseiras para ajudar a melhorar o ar e ter alimentos frescos.
+        </div>
+      </li>
+
+      <li>
+        <i class="fas fa-car"></i>
+        <div class="texto">
+          <strong>Use Transporte Sustentável</strong>
+          Prefira caminhar, usar bicicleta ou transporte público para reduzir a emissão de gases poluentes.
+        </div>
+      </li>
+
+      <li>
+        <i class="fas fa-bolt"></i>
+        <div class="texto">
+          <strong>Desligue Aparelhos</strong>
+          Desligue aparelhos eletrônicos e luzes quando não estiver usando para economizar energia.
+        </div>
+      </li>
+
+      <li>
+        <i class="fas fa-apple-alt"></i>
+        <div class="texto">
+          <strong>Compre Local e Orgânico</strong>
+          Valorize produtores locais e alimentos orgânicos, que causam menos impacto ambiental.
+        </div>
+      </li>
+
+      <li>
+        <i class="fas fa-hand-holding-heart"></i>
+        <div class="texto">
+          <strong>Doe e Reutilize</strong>
+          Doe roupas, móveis e objetos que não usa mais. Reutilize embalagens e objetos sempre que possível.
+        </div>
+      </li>
+    </ul>
+  </main>
+
+  <footer>
+    <a href="https://instagram.com/analu.riedel" target="_blank" rel="noopener">
+      <i class="fab fa-instagram"></i>Ana Luiza
+    </a>
+    <a href="https://instagram.com/acwrolini" target="_blank" rel="noopener">
+      <i class="fab fa-instagram"></i>Ana Carolini
+    </a>
+    <a href="https://instagram.com/_hrossi_" target="_blank" rel="noopener">
+      <i class="fab fa-instagram"></i>Helena
+    </a>
+    <a href="https://instagram.com/_czerski" target="_blank" rel="noopener">
+      <i class="fab fa-instagram"></i>Pedro
+    </a>
+  </footer>
+
+</body>
+</html>

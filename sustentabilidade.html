@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <title>Sustentabilidade - EcoEdu</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+
+  <style>
+    body {
+      background-color: #b7caa1;
+      font-family: Arial, sans-serif;
+      color: #364e34;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Georgia', serif;
+      font-weight: 700;
+    }
+
+    /* NAVBAR estilo anterior */
+    header {
+      background-color: #374f32;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
+      margin-bottom: 30px;
+    }
+
+    header nav {
+      width: 100%;
+    }
+
+    .nav-link {
+      color: #cbd5b5;
+      background-color: #b0c18c;
+      border-radius: 8px;
+      margin-left: 10px;
+      padding: 7px 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: #3d5a27;
+      color: #e3f4d7;
+    }
+
+    main.container {
+      margin-top: 30px;
+      width: 90%;
+      max-width: 900px;
+    }
+
+    #title-1, #title-2, #title-3 {
+      color: rgb(76, 97, 80);
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    #txt-1, #txt-2, #txt-3 {
+      background-color: azure;
+      padding: 15px 20px;
+      border-radius: 8px;
+      font-size: 1.1em;
+      line-height: 1.5em;
+      box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+      margin-bottom: 35px;
+      text-align: justify;
+    }
+
+    .pilares-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+      margin-bottom: 50px;
+    }
+
+    .flip-card {
+      background-color: transparent;
+      width: 180px;
+      height: 180px;
+      perspective: 1000px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    .flip-card:hover .flip-card-inner,
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 15px;
+      box-sizing: border-box;
+      font-weight: bold;
+    }
+
+    .flip-card-front {
+      background-color: #d7e3c4;
+      color: #2f4122;
+      font-size: 1.1em;
+      user-select: none;
+    }
+
+    .flip-card-back {
+      background-color: #557a4c;
+      color: white;
+      transform: rotateY(180deg);
+      font-weight: normal;
+      font-size: 0.9em;
+      overflow-y: auto;
+      user-select: text;
+    }
+
+    .consequencias-container {
+      max-width: 900px;
+      margin: 0 auto 60px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .consequencia-card {
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      width: 220px;
+      cursor: pointer;
+      user-select: none;
+      padding: 15px 15px 10px;
+      transition: background-color 0.3s ease;
+      position: relative;
+      outline: none;
+    }
+
+    .consequencia-card:hover {
+      background-color: #d7e3c4;
+    }
+
+    .consequencia-title {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .consequencia-text {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+      font-size: 0.95em;
+      line-height: 1.3em;
+      color: #364e34;
+    }
+
+    .consequencia-card.expanded .consequencia-text {
+      max-height: 500px;
+      padding-top: 10px;
+    }
+
+    /* NOVO RODAPÉ */
+    footer {
+      background-color: #374f32;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      padding: 0 20px;
+      box-shadow: 0 -2px 5px rgb(0 0 0 / 0.15);
+      margin-top: auto;
+    }
+
+    .social-link {
+      color: #cbd5b5;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .social-link i {
+      font-size: 22px;
+    }
+
+    .social-link:hover {
+      color: #9bb86c;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="d-flex">
+      <a class="nav-link active" href="index.html">Home</a>
+    </nav>
+  </header>
+
+  <main class="container mt-4">
+    <main class="container mt-4">
+        <h1 id="title-1">Bem-vindo à seção sobre Sustentabilidade</h1>
+        <p id="txt-1">
+            Nesta página, você compreenderá o conceito de sustentabilidade, sua importância e como é possível contribuir para a preservação do planeta.
+        </p>
+    
+        <h2 id="title-2">O que é Sustentabilidade?</h2>
+        <p id="txt-2">
+          Conceito: Sustentabilidade é a capacidade de atender às necessidades do presente sem comprometer a possibilidade das futuras gerações satisfazerem suas próprias necessidades. Isso envolve o uso racional e equilibrado dos recursos naturais, sociais e econômicos, promovendo a preservação ambiental, a justiça social e o desenvolvimento econômico sustentável.
+            <br /><br />
+            Sustentabilidade refere-se a um modo de vida que respeita a natureza, as pessoas e o futuro. Trata-se do uso consciente dos recursos naturais, evitando desperdícios e promovendo a conservação para garantir que as próximas gerações possam usufruir de um ambiente saudável.
+        </p>
+    
+        <h2 id="title-3">Os três pilares da sustentabilidade</h2>
+        <p id="txt-3">
+            A sustentabilidade apoia-se em três pilares fundamentais, que devem ser equilibrados para assegurar o desenvolvimento sustentável:
+        </p>
+    
+        <div class="pilares-container">
+            <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Pilar Ambiental" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter'){this.classList.toggle('flipped')}">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        1. Pilar Ambiental
+                    </div>
+                    <div class="flip-card-back">
+                        Envolve a proteção dos ecossistemas naturais, como florestas, rios, fauna, atmosfera e solo. Inclui práticas de prevenção à poluição, economia de água e energia, bem como a redução da geração de resíduos. Exemplos: reciclagem, plantio de árvores, uso de energias renováveis.
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Pilar Social" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter'){this.classList.toggle('flipped')}">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        2. Pilar Social
+                    </div>
+                    <div class="flip-card-back">
+                        Refere-se à promoção do bem-estar das pessoas, garantindo acesso universal à saúde, educação, segurança, moradia digna e qualidade de vida. Também contempla o respeito aos direitos humanos, a igualdade e a justiça social. Exemplos: programas sociais, escolas públicas de qualidade, políticas de inclusão.
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Pilar Econômico" onclick="this.classList.toggle('flipped')" onkeypress="if(event.key==='Enter'){this.classList.toggle('flipped')}">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        3. Pilar Econômico
+                    </div>
+                    <div class="flip-card-back">
+                        Consiste no desenvolvimento econômico responsável, que permita o crescimento e a geração de empregos sem causar danos ambientais ou explorar a mão de obra. Exemplos: empresas que adotam práticas sustentáveis, utilizam materiais recicláveis e oferecem condições justas aos trabalhadores.
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <h2>Consequências da Falta de Sustentabilidade</h2>
+        <p style="text-align:center; margin-bottom: 30px;">
+            Quando o ser humano desperdiça recursos, polui o ambiente e não pensa no futuro, o planeta começa a sofrer — e isso volta para nós mesmos.
+        </p>
+    
+        <div class="consequencias-container">
+            <div class="consequencia-card" tabindex="0" role="button" aria-expanded="false" aria-controls="c1" onclick="toggleCard(this)" onkeypress="if(event.key==='Enter'){toggleCard(this)}">
+                <div class="consequencia-title">🌡️ Aquecimento global</div>
+                <div class="consequencia-text" id="c1">
+                    A Terra está ficando cada vez mais quente.<br>
+                    Isso acontece por causa da poluição, desmatamento e uso exagerado de combustíveis fósseis.<br>
+                    O clima muda, as estações ficam confusas, e eventos extremos como secas, enchentes e furacões se tornam mais frequentes.
+                </div>
+            </div>
+    
+            <div class="consequencia-card" tabindex="0" role="button" aria-expanded="false" aria-controls="c2" onclick="toggleCard(this)" onkeypress="if(event.key==='Enter'){toggleCard(this)}">
+                <div class="consequencia-title">💧 Falta de água potável</div>
+                <div class="consequencia-text" id="c2">
+                    Com rios poluídos e nascentes secando, a água limpa começa a faltar.<br>
+                    Isso afeta o consumo das pessoas, a agricultura e a vida dos animais.
+                </div>
+            </div>
+    
+            <div class="consequencia-card" tabindex="0" role="button" aria-expanded="false" aria-controls="c3" onclick="toggleCard(this)" onkeypress="if(event.key==='Enter'){toggleCard(this)}">
+                <div class="consequencia-title">🐾 Extinção de espécies</div>
+                <div class="consequencia-text" id="c3">
+                    Animais e plantas estão desaparecendo porque seus habitats estão sendo destruídos.<br>
+                    Se uma espécie some, todo o ecossistema entra em desequilíbrio.
+                </div>
+            </div>
+    
+            <div class="consequencia-card" tabindex="0" role="button" aria-expanded="false" aria-controls="c4" onclick="toggleCard(this)" onkeypress="if(event.key==='Enter'){toggleCard(this)}">
+                <div class="consequencia-title">🗑️ Acúmulo de lixo</div>
+                <div class="consequencia-text" id="c4">
+                    Quando não há reciclagem e cuidado com o lixo, ele vai parar em rios, mares e florestas.<br>
+                    Plásticos, por exemplo, demoram centenas de anos para se decompor e prejudicam animais marinhos.
+                </div>
+            </div>
+    
+            <div class="consequencia-card" tabindex="0" role="button" aria-expanded="false" aria-controls="c5" onclick="toggleCard(this)" onkeypress="if(event.key==='Enter'){toggleCard(this)}">
+                <div class="consequencia-title">🌳 Desmatamento</div>
+                <div class="consequencia-text" id="c5">
+                    Florestas são derrubadas para dar lugar a plantações e cidades, sem controle.<br>
+                    Isso prejudica o ar, o solo, os animais e contribui para o aquecimento global.
+                </div>
+            </div>
+    
+            <div class="consequencia-card" tabindex="0" role="button" aria-expanded="false" aria-controls="c6" onclick="toggleCard(this)" onkeypress="if(event.key==='Enter'){toggleCard(this)}">
+                <div class="consequencia-title">🧍‍♂️ Desigualdade social</div>
+                <div class="consequencia-text" id="c6">
+                    Quando os recursos não são usados de forma justa, a desigualdade cresce.<br>
+                    Pessoas pobres sofrem mais com a poluição, falta de comida, moradia e saúde.
+                </div>
+            </div>
+    
+            <div class="consequencia-card" tabindex="0" role="button" aria-expanded="false" aria-controls="c7" onclick="toggleCard(this)" onkeypress="if(event.key==='Enter'){toggleCard(this)}">
+                <div class="consequencia-title">💸 Crises econômicas</div>
+                <div class="consequencia-text" id="c7">
+                    A destruição da natureza afeta o funcionamento de empresas, a produção de alimentos e o turismo.<br>
+                    Sem equilíbrio, a economia também perde.
+                </div>
+            </div>
+        </div>
+    
+        <h2>O que podemos fazer?</h2>
+    <p style="background-color: azure; padding: 15px 20px; border-radius: 8px; font-size: 1.1em; line-height: 1.5em; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); margin-bottom: 35px; text-align: justify;">
+        Embora os desafios sejam grandes, é possível contribuir diariamente por meio de atitudes simples e conscientes. Práticas como fechar a torneira enquanto se escova os dentes, apagar as luzes ao sair de um ambiente, reduzir o consumo de plástico e separar o lixo para reciclagem são exemplos eficazes.<br><br>
+        Além disso, adquirir apenas o necessário e preferir produtos de empresas comprometidas com a sustentabilidade reforça o impacto positivo. Compartilhar conhecimento e estimular a adoção dessas práticas nas comunidades, escolas e locais de trabalho potencializa os resultados.<br><br>
+        Sustentabilidade é um esforço coletivo composto por pequenas ações que, somadas, geram grandes mudanças para o futuro do planeta.
+    </p>
+    <h2>Sustentabilidade nas cidades</h2>
+    <p style="background-color: azure; padding: 15px 20px; border-radius: 8px; font-size: 1.1em; line-height: 1.5em; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); margin-bottom: 35px; text-align: justify;">
+        A sustentabilidade urbana consiste em planejar e organizar o crescimento das cidades de modo a preservar o meio ambiente e garantir qualidade de vida para seus habitantes.<br><br>
+    
+        Esse conceito envolve diversas dimensões, como:<br><br>
+    
+        • Preservação de áreas verdes, como parques e jardins, que melhoram a qualidade do ar e proporcionam espaços de lazer.<br>
+        • Investimento em transporte público eficiente, além de infraestrutura para ciclistas e pedestres, a fim de reduzir a poluição causada por veículos particulares.<br>
+        • Implementação da coleta seletiva e incentivo à reciclagem.<br>
+        • Utilização de fontes renováveis de energia, como solar e eólica.<br>
+        • Gestão consciente dos recursos hídricos, com medidas para evitar desperdícios e tratar adequadamente os resíduos sanitários.<br><br>
+    
+        Além disso, cidades sustentáveis promovem inclusão social, assegurando acesso universal a serviços essenciais como saúde, educação e moradia digna.<br><br>
+    
+        Quando esses elementos são integrados, as cidades tornam-se ambientes mais limpos, saudáveis e agradáveis para seus moradores — hoje e no futuro.
+    </p>
+    <h2>Exemplos de projetos sustentáveis</h2>
+    <ul style="background-color: azure; padding: 15px 20px; border-radius: 8px; font-size: 1.1em; line-height: 1.5em; box-shadow: 2px 2px 6px rgba(0,0,0,0.1); max-width: 900px; margin: 0 auto 40px; list-style-position: inside;">
+      <li><strong>Projeto Tamar (Brasil):</strong> voltado à proteção das tartarugas marinhas ameaçadas de extinção, aliando conservação ambiental e desenvolvimento do turismo sustentável nas comunidades locais.</li>
+      <li><strong>Coleta Seletiva em Curitiba (Brasil):</strong> referência nacional pelo eficiente sistema de reciclagem e reaproveitamento de materiais, que também gera emprego para catadores.</li>
+      <li><strong>Cidades Sustentáveis na Europa:</strong> diversas cidades, como Copenhague e Estocolmo, investem em transporte verde, energia renovável e políticas de urbanismo sustentável.</li>
+      <li><strong>Arquitetura Verde:</strong> construção de edifícios com técnicas de eficiência energética, uso de materiais reciclados e integração com o meio ambiente.</li>
+    </ul>
+    </main>
+  </main>
+
+  <footer>
+    <a href="https://instagram.com/analu.riedel" class="social-link" target="_blank"><i class="fab fa-instagram"></i>Ana Luiza</a>
+    <a href="https://instagram.com/acwrolini" class="social-link" target="_blank"><i class="fab fa-instagram"></i>Ana Carolini</a>
+    <a href="https://instagram.com/_hrossi_" class="social-link" target="_blank"><i class="fab fa-instagram"></i>Helena</a>
+    <a href="https://instagram.com/_czerski" class="social-link" target="_blank"><i class="fab fa-instagram"></i>Pedro</a>
+  </footer>
+
+  <script>
+    function toggleCard(card) {
+      const isExpanded = card.classList.toggle('expanded');
+      card.setAttribute('aria-expanded', isExpanded);
+    }
+  </script>
+</body>
+</html>

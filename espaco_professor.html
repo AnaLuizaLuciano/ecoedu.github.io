@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atividades Sustentáveis</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+
+  <style>
+    body {
+      background-color: #b7caa1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    header {
+      background-color: #374f32;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
+      margin-bottom: 60px;
+    }
+
+    header nav {
+      width: 100%;
+    }
+
+    .nav-link {
+      color: #cbd5b5;
+      background-color: #b0c18c;
+      border-radius: 8px;
+      margin-left: 10px;
+      padding: 7px 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: #3d5a27;
+      color: #e3f4d7;
+    }
+
+    main .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      justify-content: center;
+      padding: 0 20px 60px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgb(0 0 0 / 0.1);
+      border: none;
+      width: 320px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgb(0 0 0 / 0.15);
+    }
+
+    .card-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card-title span.icon {
+      font-size: 1.6rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      margin-bottom: 0.7rem;
+      color: #374f32;
+      line-height: 1.4;
+    }
+
+    .card p strong {
+      color: #3d5a27;
+    }
+
+    footer {
+      background-color: #374f32;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      padding: 0 20px;
+      box-shadow: 0 -2px 5px rgb(0 0 0 / 0.15);
+      margin-top: auto;
+    }
+
+    .social-link {
+      color: #cbd5b5;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .social-link i {
+      font-size: 22px;
+    }
+
+    .social-link:hover {
+      color: #9bb86c;
+    }
+
+    @media (max-width: 1024px) {
+      main .container {
+        gap: 30px;
+      }
+      .card {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .card {
+        width: 100%;
+      }
+      .nav-link {
+        margin-left: 5px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="d-flex">
+      <a href="index.html" class="nav-link active">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1 class="text-center mb-4 fw-bold">Ideias de atividades escolares sobre sustentabilidade</h1>
+    <p class="text-center mb-5" style="max-width: 800px; margin: 0 auto; color: #374f32;">
+      Explore propostas práticas e criativas para trabalhar a educação ambiental de forma colaborativa, consciente e divertida dentro e fora da sala de aula.
+    </p>
+
+    <div class="container">
+      <article class="card">
+        <h2 class="card-title"><span class="icon">🌱</span>Jardim Sustentável</h2>
+        <p><strong>Objetivo:</strong> Criar um mini-jardim com plantas nativas e hortaliças cultivadas em vasos reaproveitados.</p>
+        <p><strong>Como aplicar:</strong> Use garrafas PET, latas ou embalagens como vasos. Os alunos participam do plantio, rega, manutenção e colheita, registrando o crescimento em gráficos ou fotos.</p>
+        <p><strong>Benefícios:</strong> Desenvolve habilidades científicas (observação, registro), promove alimentação saudável e conexão com a natureza, além de estimular trabalho em grupo e responsabilidade ambiental.</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title"><span class="icon">♻️</span>Oficina de Reciclagem / Upcycling</h2>
+        <p><strong>Objetivo:</strong> Estimular a criatividade, transformando materiais descartáveis em novos objetos úteis ou artísticos.</p>
+        <p><strong>Como aplicar:</strong> Recolha embalagens plásticas, papéis e tecidos para criação de ecobags, jogos, brinquedos, porta-lápis, entre outros.</p>
+        <p><strong>Benefícios:</strong> Ensina reutilização, reduz o consumo, incentiva pensamento criativo e ligada aos 3Rs (reduzir, reutilizar, reciclar).</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title"><span class="icon">🗑️</span>Projeto de Coleta Seletiva</h2>
+        <p><strong>Objetivo:</strong> Implementar e estimular práticas de separação de lixo na escola.</p>
+        <p><strong>Como aplicar:</strong> Disponibilize lixeiras para papel, plástico, metal e vidro; crie cartazes explicativos e promova campanhas de conscientização.</p>
+        <p><strong>Benefícios:</strong> Fomenta educação ambiental, cidadania e mudança de hábitos, com potencial para integrar projetos como Eco Schools.</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title"><span class="icon">☀️</span>Forno Solar (Energia Solar)</h2>
+        <p><strong>Objetivo:</strong> Demonstrar o uso da energia solar para aquecer ou cozinhar alimentos.</p>
+        <p><strong>Como aplicar:</strong> Monte um forno solar usando caixa de pizza ou garrafa PET revestida com alumínio e plástico transparente. Teste derretendo marshmallows, chocolates ou aquecendo água.</p>
+        <p><strong>Benefícios:</strong> Aborda conceitos de radiação, efeito estufa, energias renováveis e engenharia criativa. Can be group challenge too!</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title"><span class="icon">🗣️</span>Debate sobre Consumo Consciente</h2>
+        <p><strong>Objetivo:</strong> Estimular reflexão crítica sobre hábitos de consumo e impacto ambiental.</p>
+        <p><strong>Como aplicar:</strong> Proponha temas (ex.: “É possível viver sem plástico?”), forme grupos, oriente discussões e termine com lista de boas práticas adotáveis.</p>
+        <p><strong>Benefícios:</strong> Desenvolve habilidades de argumentação, pensamento crítico e responsabilidade social.</p>
+      </article>
+
+      <article class="card">
+        <h2 class="card-title"><span class="icon">🎥</span>Produção de Vídeo ou Jornal Sustentável</h2>
+        <p><strong>Objetivo:</strong> Integração entre sustentabilidade e comunicação multimídia.</p>
+        <p><strong>Como aplicar:</strong> Alunos gravam ações ecológicas, produzem vídeos ou boletins digitais com fotos, textos e infográficos para divulgação na escola ou redes sociais.</p>
+        <p><strong>Benefícios:</strong> Estimula criatividade, competência digital, comunicação e identidade de comunidade.</p>
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    <a href="https://instagram.com/analu.riedel" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i>Ana Luiza</a>
+    <a href="https://instagram.com/acwrolini" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i>Ana Carolini</a>
+    <a href="https://instagram.com/_hrossi_" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i>Helena</a>
+    <a href="https://instagram.com/_czerski" class="social-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i>Pedro</a>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+</body>
+</html>

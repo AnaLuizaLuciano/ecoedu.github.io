@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz de Desenvolvimento Sustentável</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
+
+  <style>
+    body {
+      background-color: #b7caa1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      color: #374f32;
+    }
+
+    /* Cabeçalho escuro */
+    header {
+      background-color: #374f32;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      box-shadow: 0 2px 5px rgb(0 0 0 / 0.2);
+      margin-bottom: 60px;
+    }
+
+    header nav {
+      width: 100%;
+    }
+
+    .nav-link {
+      color: #cbd5b5;
+      background-color: #b0c18c;
+      border-radius: 8px;
+      margin-left: 10px;
+      padding: 7px 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: inline-block;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      background-color: #3d5a27;
+      color: #e3f4d7;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 0 20px 60px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+
+    .quiz-container {
+      background-color: #374f32;
+      padding: 25px 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgb(0 0 0 / 0.15);
+      color: #d9e7c8;
+    }
+
+    .quiz-container h1 {
+      text-align: center;
+      color: #9bb86c;
+      margin-bottom: 25px;
+      font-weight: 700;
+      font-size: 1.9rem;
+      user-select: none;
+    }
+
+    .question {
+      font-size: 1.15rem;
+      margin-bottom: 20px;
+      text-align: center;
+      font-weight: 600;
+      color: #aecb9f;
+      user-select: none;
+    }
+
+    .options {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .options li {
+      background-color: #e8f0d9;
+      margin-bottom: 12px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #374f32;
+      box-shadow: 1px 1px 6px rgb(0 0 0 / 0.1);
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .options li:hover:not(.selected) {
+      background-color: #c7d5a6;
+    }
+
+    .options li.selected.correct {
+      background-color: #5f8863;
+      color: #e7f4d1;
+      cursor: default;
+    }
+
+    .options li.selected.incorrect {
+      background-color: #b44e4e;
+      color: #f9d6d6;
+      cursor: default;
+    }
+
+    .explanation {
+      margin-top: 15px;
+      background-color: #9bb86c;
+      color: #2e4124;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-weight: 600;
+      user-select: text;
+      display: none;
+    }
+
+    .submit-btn,
+    .restart-btn,
+    #next-btn {
+      width: 100%;
+      padding: 12px;
+      margin-top: 18px;
+      background-color: #9bb86c;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #2e4124;
+      cursor: pointer;
+      box-shadow: 1px 3px 6px rgb(0 0 0 / 0.15);
+      user-select: none;
+    }
+
+    #next-btn {
+      display: none;
+    }
+
+    .result {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #cdd9b7;
+      user-select: none;
+    }
+
+    /* Rodapé escuro */
+    footer {
+      background-color: #374f32;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      flex-wrap: wrap;
+      padding: 0 20px;
+      box-shadow: 0 -2px 5px rgb(0 0 0 / 0.15);
+      margin-top: auto;
+    }
+
+    .social-link {
+      color: #cbd5b5;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .social-link i {
+      font-size: 22px;
+    }
+
+    .social-link:hover {
+      color: #9bb86c;
+    }
+
+    /* Responsividade */
+    @media (max-width: 650px) {
+      main {
+        max-width: 100%;
+        padding: 0 15px 60px;
+      }
+
+      .nav-link {
+        margin-left: 5px;
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="d-flex">
+      <a href="index.html" class="nav-link">Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="quiz-container">
+      <h1>Quiz de desenvolvimento sustentável</h1>
+
+      <div id="quiz">
+        <div class="question">
+          <p id="question-text">Carregando pergunta...</p>
+        </div>
+
+        <ul class="options">
+          <li onclick="checkAnswer('a', this)">Opção A</li>
+          <li onclick="checkAnswer('b', this)">Opção B</li>
+          <li onclick="checkAnswer('c', this)">Opção C</li>
+          <li onclick="checkAnswer('d', this)">Opção D</li>
+        </ul>
+
+        <div id="explanation" class="explanation"></div>
+
+        <button id="next-btn" onclick="nextQuestion()">Próxima Pergunta</button>
+      </div>
+
+      <div id="result" class="result" style="display: none;">
+        <p id="score"></p>
+        <button class="restart-btn" onclick="restartQuiz()">Reiniciar Quiz</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <a
+      href="https://instagram.com/analu.riedel"
+      class="social-link"
+      target="_blank"
+      rel="noopener noreferrer"
+      ><i class="fab fa-instagram"></i>Ana Luiza</a
+    >
+    <a
+      href="https://instagram.com/acwrolini"
+      class="social-link"
+      target="_blank"
+      rel="noopener noreferrer"
+      ><i class="fab fa-instagram"></i>Ana Carolini</a
+    >
+    <a
+      href="https://instagram.com/_hrossi_"
+      class="social-link"
+      target="_blank"
+      rel="noopener noreferrer"
+      ><i class="fab fa-instagram"></i>Helena</a
+    >
+    <a
+      href="https://instagram.com/_czerski"
+      class="social-link"
+      target="_blank"
+      rel="noopener noreferrer"
+      ><i class="fab fa-instagram"></i>Pedro</a
+    >
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+    crossorigin="anonymous"
+  ></script>
+
+  <script>
+    const questions = [
+      {
+        question: "O conceito de 'pegada ecológica' mede:",
+        options: [
+          "A quantidade de lixo que uma pessoa produz por mês",
+          "O quanto uma população consome recursos naturais em comparação ao que o planeta pode regenerar",
+          "O número de árvores plantadas por ano",
+          "O impacto das mudanças climáticas nos oceanos",
+        ],
+        answer: "b",
+        explanation:
+          "A pegada ecológica mede o quanto uma população consome recursos naturais em comparação ao que o planeta pode regenerar.",
+      },
+      {
+        question: "Qual desses produtos é considerado o mais poluente na indústria da moda?",
+        options: ["Tênis esportivo", "Jeans", "Jaqueta de lã", "Camiseta de algodão"],
+        answer: "b",
+        explanation:
+          "O jeans, por conta do uso intensivo de água e produtos químicos na sua produção, é o mais poluente na indústria da moda.",
+      },
+      {
+        question: "Quanto tempo uma bituca de cigarro pode levar para se decompor na natureza?",
+        options: ["6 meses", "2 anos", "Até 10 anos", "Até 5 anos"],
+        answer: "d",
+        explanation:
+          "Uma bituca de cigarro pode levar até 5 anos para se decompor na natureza, dependendo do ambiente.",
+      },
+      {
+        question: "Qual dessas ações reduz significativamente a emissão de gases de efeito estufa?",
+        options: [
+          "Trocar sacolas plásticas por ecológicas",
+          "Plantar árvores no quintal",
+          "Reduzir o consumo de carne vermelha",
+          "Tomar banhos mais curtos",
+        ],
+        answer: "c",
+        explanation:
+          "Reduzir o consumo de carne vermelha diminui a emissão de gases de efeito estufa, pois a pecuária é uma das maiores fontes desses gases.",
+      },
+      {
+        question: "Qual material é o mais difícil de reciclar corretamente, mesmo sendo muito utilizado?",
+        options: ["Vidro", "Papelão", "Alumínio", "Isopor"],
+        answer: "d",
+        explanation:
+          "O isopor é difícil de reciclar devido ao seu volume, baixa densidade, contaminação comum e infraestrutura limitada para reciclagem.",
+      },
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+    function checkAnswer(selectedOption, optionElement) {
+      if (answered) return;
+
+      const correctAnswer = questions[currentQuestion].answer;
+      const optionsEls = document.querySelectorAll(".options li");
+      const explanationEl = document.getElementById("explanation");
+
+      if (selectedOption === correctAnswer) {
+        optionElement.classList.add("selected", "correct");
+        score++;
+      } else {
+        optionElement.classList.add("selected", "incorrect");
+      }
+
+      optionsEls.forEach((option) => {
+        const correctText = questions[currentQuestion].options[correctAnswer.charCodeAt(0) - 97];
+        if (!option.classList.contains("selected") && option.textContent === correctText) {
+          option.classList.add("selected", "correct");
+        }
+        option.style.pointerEvents = "none";
+      });
+
+      explanationEl.textContent = questions[currentQuestion].explanation;
+      explanationEl.style.display = "block";
+
+      answered = true;
+      document.getElementById("next-btn").style.display = "block";
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        displayQuestion();
+      } else {
+        displayResult();
+      }
+
+      const optionsEls = document.querySelectorAll(".options li");
+      optionsEls.forEach((option) => {
+        option.className = "";
+        option.style.pointerEvents = "auto";
+      });
+
+      document.getElementById("explanation").style.display = "none";
+
+      answered = false;
+      document.getElementById("next-btn").style.display = "none";
+    }
+
+    function displayQuestion() {
+      const questionText = document.getElementById("question-text");
+      questionText.textContent = questions[currentQuestion].question;
+
+      const optionsEls = document.querySelectorAll(".options li");
+      optionsEls.forEach((option, index) => {
+        option.textContent = questions[currentQuestion].options[index];
+      });
+
+      document.getElementById("explanation").style.display = "none";
+    }
+
+    function displayResult() {
+      document.getElementById("quiz").style.display = "none";
+      const resultEl = document.getElementById("result");
+      resultEl.style.display = "block";
+      document.getElementById("score").textContent = `Você acertou ${score} de ${questions.length} perguntas!`;
+    }
+
+    function restartQuiz() {
+      score = 0;
+      currentQuestion = 0;
+      answered = false;
+      document.getElementById("result").style.display = "none";
+      document.getElementById("quiz").style.display = "block";
+      displayQuestion();
+    }
+
+    displayQuestion();
+  </script>
+</body>
+</html>
